@@ -7,13 +7,35 @@ import {
   faCarrot,
   faPepperHot,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 
 export const SearchSelect = ({ data, placeholderText }) => {
   const [isOpen, setSelectOpen] = useState(false);
   const [selectedVal, setSelectedVal] = useState("");
   const [filteredItems, setFilteredItems] = useState(data);
+  const ref = useRef(null);
+
+  const handleHideDropdown = (event) => {
+    if (event.key === "Escape") {
+      setSelectOpen(false);
+    }
+  };
+
+  const handleClickOutside = event => {
+    if (ref.current && !ref.current.contains(event.target)) {
+      setSelectOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleHideDropdown, true);
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("keydown", handleHideDropdown, true);
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  },[]);
 
   const filterItems = (e) => {
     const filterVal = e.currentTarget.value.toLowerCase();
@@ -57,7 +79,7 @@ export const SearchSelect = ({ data, placeholderText }) => {
       </div>
       {isOpen && (
         <CSSTransition in={isOpen} timeout={300} classNames="content" appear>
-          <div className={`search-select__content ${isOpen ? "focused" : ""}`}>
+          <div ref={ref} className={`search-select__content ${isOpen ? "focused" : ""}`}>
             <div className="search-select__select-input">
               <input
                 type="text"
