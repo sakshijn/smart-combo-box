@@ -1,19 +1,31 @@
+.search-select-box {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+}
+.placeholder-text {
+  color: gray;
+}
 .select-btn {
   background-color: #ddd;
   display: flex;
-  padding: 10px;
+  padding: 15px;
   justify-content: space-between;
   width: 220px;
   cursor: pointer;
+  color: #101010;
 }
 
 .search-box {
   width: 220px;
-  padding: 10px;
   border: none;
 }
-.search-box:focus-visible {
+/* .search-box:focus-visible {
   outline: none;
+} */
+
+.selected-value {
+  font-size: 14px;
 }
 .select-options-list {
   list-style: none;
@@ -42,7 +54,7 @@
 
 .select-input {
   display: flex;
-  padding: 10px;
+  padding: 15px;
   justify-content: space-between;
   width: 220px;
   background-color: #fff;
@@ -54,7 +66,6 @@
 .hide {
   display: none;
 }
-.search-select-box {
-  position: relative;
-  display: inline-block;
+.focused {
+  outline: 1px solid #0033cc;
 }

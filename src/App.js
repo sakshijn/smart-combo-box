@@ -1,11 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
-import { SearchSelect } from './SearchSelect';
+import "./App.css";
+import { SearchSelect } from "./SearchSelect";
+import mockData from "./mockData.json";
 
 function App() {
   return (
     <div className="App">
-        <SearchSelect/>
+      <div>Smart combo box component</div>
+      <SearchSelect data={mockData} placeholderText="Choose a Fruit:" />
     </div>
   );
 }
