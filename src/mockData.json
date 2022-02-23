@@ -12,7 +12,27 @@
     "displayIcon": "carrot"
   },
   {
-    "displayItem": "Pepper",
-    "displayIcon": "pepper-hot"
+    "displayItem": "Pepper is loooonnnnnnngggggggggggggg",
+    "displayIcon": "pepper"
+  },
+  {
+    "displayItem": "Apple",
+    "displayIcon": "apple-whole"
+  },
+  {
+    "displayItem": "Lemon",
+    "displayIcon": "lemon"
+  },
+  {
+    "displayItem": "Carrot",
+    "displayIcon": "carrot"
+  },
+  {
+    "displayItem": "Pepper is loooonnnnnnngggggggggggggg",
+    "displayIcon": "pepper"
+  },
+  {
+    "displayItem": "Apple",
+    "displayIcon": "apple-whole"
   }
 ]

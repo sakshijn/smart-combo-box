@@ -4,10 +4,12 @@ $color-label-light: #808080;
 $color-background-grey: #ddd;
 $color-white: #fff;
 
+/* utility */
+$width: 250px;
+
 /* mixins */
 @mixin fieldWithIcon {
     display: flex;
     padding: 15px;
     justify-content: space-between;
-    width: 220px;
 }

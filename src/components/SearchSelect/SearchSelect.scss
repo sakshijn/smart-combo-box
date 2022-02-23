@@ -1,6 +1,6 @@
 @import "./../../variables";
 
-.search-select-box {
+.search-select {
   position: relative;
   display: inline-block;
   margin-top: 20px;
@@ -10,6 +10,7 @@
     background-color: $color-background-grey;
     cursor: pointer;
     color: $color-label-dark;
+    width: $width;
   }
   &__selected-value {
     font-size: 14px;
@@ -18,7 +19,7 @@
     color: $color-label-light;
   }
   &__content {
-    min-width: 220px;
+    width: $width;
     border: 1px solid $color-background-grey;
     border-radius: 2px;
     z-index: 1;
@@ -28,7 +29,6 @@
     background-color: $color-white;
   }
   &__input {
-    width: 220px;
     border: none;
     &:focus-visible {
       outline: none;
@@ -39,10 +39,16 @@
     text-align: left;
     padding-left: 0;
     margin: 0;
+    max-height: 200px;
+    overflow: scroll;
+    width: 100%;
   }
   &__options {
     padding: 10px;
     cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     & span {
       padding-left: 10px;
     }
