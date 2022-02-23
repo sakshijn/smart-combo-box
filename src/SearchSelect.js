@@ -1,6 +1,6 @@
 import "./SearchSelect.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faAppleWhole, faLemon, faCarrot, faPepperHot } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 export const SearchSelect = () => {
@@ -10,16 +10,16 @@ export const SearchSelect = () => {
       displayIcon: "apple-whole",
     },
     {
-      displayItem: "Banana",
-      displayIcon: "faAppleWhole",
+      displayItem: "Lemon",
+      displayIcon: "lemon",
     },
     {
-      displayItem: "Strawberry",
-      displayIcon: "faAppleWhole",
+      displayItem: "Carrot",
+      displayIcon: "carrot",
     },
     {
-      displayItem: "Pineapple",
-      displayIcon: "faAppleWhole",
+      displayItem: "Pepper",
+      displayIcon: "pepper-hot",
     },
   ];
   const placeholderText= "Choose a Fruit:";
@@ -29,6 +29,15 @@ export const SearchSelect = () => {
   const filterItems = (e) => {
     const filterVal = e.currentTarget.value.toLowerCase();
     setFilteredItems(data.filter(item => item.displayItem.toLowerCase().includes(filterVal)));
+  }
+  const getFAIcon = icon => {
+    switch(icon) {
+      case "apple-whole": return faAppleWhole; 
+      case "lemon": return faLemon;
+      case "carrot": return faCarrot;
+      case "pepper": return faPepperHot;
+      default: return faAppleWhole;
+    }
   }
   return (
     <div className="search-select-box">
@@ -61,7 +70,7 @@ export const SearchSelect = () => {
                 setSelectOpen(false);
               }}
             >
-              <FontAwesomeIcon icon={`fa-solid fa-${item.displayIcon}`} />
+              <FontAwesomeIcon icon={getFAIcon(item.displayIcon)} />
               <span>{item.displayItem}</span>
             </li>
           ))}
