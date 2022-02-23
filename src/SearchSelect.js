@@ -22,9 +22,14 @@ export const SearchSelect = () => {
       displayIcon: "faAppleWhole",
     },
   ];
+  const placeholderText= "Choose a Fruit:";
   const [isOpen, setSelectOpen] = useState(false);
   const [selectedVal, setSelectedVal] = useState("");
-
+  const [filteredItems, setFilteredItems] = useState(data);
+  const filterItems = (e) => {
+    const filterVal = e.currentTarget.value.toLowerCase();
+    setFilteredItems(data.filter(item => item.displayItem.toLowerCase().includes(filterVal)));
+  }
   return (
     <div className="search-select-box">
       <div
@@ -33,20 +38,21 @@ export const SearchSelect = () => {
         tabIndex="0"
         onClick={() => setSelectOpen(true)}
       >
-        <div>{selectedVal === "" ? "Choose a Fruit:" : selectedVal}</div>
+        <div>{selectedVal === "" ? placeholderText : selectedVal}</div>
         <FontAwesomeIcon icon={faAngleDown} />
       </div>
       <div className={`select-box-content ${isOpen ? "show" : ""}`}>
         <div className="select-input">
           <input
             type="text"
-            placeholder="Choose a Fruit:"
+            placeholder={placeholderText}
             className="search-box"
+            onKeyUp={filterItems}
           />
           <FontAwesomeIcon icon={faAngleDown} />
         </div>
         <ul className="select-options-list">
-          {data.map((item, index) => (
+          {filteredItems.map((item, index) => (
             <li
               className="select-options"
               key={index}
