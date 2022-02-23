@@ -1,0 +1,59 @@
+@import "./../../variables";
+
+.search-select-box {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+
+  &__btn {
+    @include fieldWithIcon;
+    background-color: $color-background-grey;
+    cursor: pointer;
+    color: $color-label-dark;
+  }
+  &__selected-value {
+    font-size: 14px;
+  }
+  &__placeholder-text {
+    color: $color-label-light;
+  }
+  &__content {
+    min-width: 220px;
+    border: 1px solid $color-background-grey;
+    border-radius: 2px;
+    z-index: 1;
+  }
+  &__select-input {
+    @include fieldWithIcon;
+    background-color: $color-white;
+  }
+  &__input {
+    width: 220px;
+    border: none;
+    &:focus-visible {
+      outline: none;
+    }
+  }
+  &__options-list {
+    list-style: none;
+    text-align: left;
+    padding-left: 0;
+    margin: 0;
+  }
+  &__options {
+    padding: 10px;
+    cursor: pointer;
+    & span {
+      padding-left: 10px;
+    }
+    &:hover {
+      background-color: $color-background-grey;
+    }
+  }
+  .hide {
+    display: none;
+  }
+  .focused {
+    outline: -webkit-focus-ring-color auto 1px;
+  }
+}

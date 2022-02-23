@@ -1,5 +1,5 @@
 import "./App.css";
-import { SearchSelect } from "./SearchSelect";
+import { SearchSelect } from "./components/SearchSelect/SearchSelect";
 import mockData from "./mockData.json";
 
 function App() {

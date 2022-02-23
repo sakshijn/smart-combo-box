@@ -1,4 +1,4 @@
-import "./SearchSelect.css";
+import "./SearchSelect.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleDown,
@@ -39,13 +39,13 @@ export const SearchSelect = ({ data, placeholderText }) => {
     <div className="search-select-box">
       <div
         role="button"
-        className={`select-btn ${isOpen ? "hide" : ""}`}
+        className={`search-select-box__btn ${isOpen ? "hide" : ""}`}
         tabIndex="-1"
         onClick={() => setSelectOpen(true)}
       >
-        <div className="selected-value">
+        <div className="search-select-box__selected-value">
           {selectedVal === "" ? (
-            <span className="placeholder-text">{placeholderText}</span>
+            <span className="search-select-box__placeholder-text">{placeholderText}</span>
           ) : (
             selectedVal
           )}
@@ -53,21 +53,21 @@ export const SearchSelect = ({ data, placeholderText }) => {
         <FontAwesomeIcon icon={faAngleDown} />
       </div>
       {isOpen && (
-        <div className={`select-box-content ${isOpen ? "focused" : ""}`}>
-          <div className="select-input">
+        <div className={`search-select-box__content ${isOpen ? "focused" : ""}`}>
+          <div className="search-select-box__select-input">
             <input
               type="text"
               autoFocus
               placeholder={placeholderText}
-              className="search-box"
+              className="search-select-box__input"
               onKeyUp={filterItems}
             />
             <FontAwesomeIcon icon={faAngleDown} />
           </div>
-          <ul className="select-options-list">
+          <ul className="search-select-box__options-list">
             {filteredItems.map((item, index) => (
               <li
-                className="select-options"
+                className="search-select-box__options"
                 key={index}
                 onClick={() => {
                   setSelectedVal(item.displayItem);

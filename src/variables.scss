@@ -1,0 +1,13 @@
+/* colors */
+$color-label-dark: #101010;
+$color-label-light: #808080;
+$color-background-grey: #ddd;
+$color-white: #fff;
+
+/* mixins */
+@mixin fieldWithIcon {
+    display: flex;
+    padding: 15px;
+    justify-content: space-between;
+    width: 220px;
+}
