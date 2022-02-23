@@ -8,6 +8,7 @@ import {
   faPepperHot,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { CSSTransition } from "react-transition-group";
 
 export const SearchSelect = ({ data, placeholderText }) => {
   const [isOpen, setSelectOpen] = useState(false);
@@ -45,7 +46,9 @@ export const SearchSelect = ({ data, placeholderText }) => {
       >
         <div className="search-select__selected-value">
           {selectedVal === "" ? (
-            <span className="search-select__placeholder-text">{placeholderText}</span>
+            <span className="search-select__placeholder-text">
+              {placeholderText}
+            </span>
           ) : (
             selectedVal
           )}
@@ -53,33 +56,35 @@ export const SearchSelect = ({ data, placeholderText }) => {
         <FontAwesomeIcon icon={faAngleDown} />
       </div>
       {isOpen && (
-        <div className={`search-select__content ${isOpen ? "focused" : ""}`}>
-          <div className="search-select__select-input">
-            <input
-              type="text"
-              autoFocus
-              placeholder={placeholderText}
-              className="search-select__input"
-              onKeyUp={filterItems}
-            />
-            <FontAwesomeIcon icon={faAngleDown} />
+        <CSSTransition in={isOpen} timeout={300} classNames="content" appear>
+          <div className={`search-select__content ${isOpen ? "focused" : ""}`}>
+            <div className="search-select__select-input">
+              <input
+                type="text"
+                autoFocus
+                placeholder={placeholderText}
+                className="search-select__input"
+                onKeyUp={filterItems}
+              />
+              <FontAwesomeIcon icon={faAngleDown} />
+            </div>
+            <ul className="search-select__options-list">
+              {filteredItems.map((item, index) => (
+                <li
+                  className="search-select__options"
+                  key={index}
+                  onClick={() => {
+                    setSelectedVal(item.displayItem);
+                    setSelectOpen(false);
+                  }}
+                >
+                  <FontAwesomeIcon icon={getFAIcon(item.displayIcon)} />
+                  <span>{item.displayItem}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="search-select__options-list">
-            {filteredItems.map((item, index) => (
-              <li
-                className="search-select__options"
-                key={index}
-                onClick={() => {
-                  setSelectedVal(item.displayItem);
-                  setSelectOpen(false);
-                }}
-              >
-                <FontAwesomeIcon icon={getFAIcon(item.displayIcon)} />
-                <span>{item.displayItem}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        </CSSTransition>
       )}
     </div>
   );

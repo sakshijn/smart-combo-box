@@ -11,6 +11,7 @@
     cursor: pointer;
     color: $color-label-dark;
     width: $width;
+    box-sizing: border-box;
   }
   &__selected-value {
     font-size: 14px;
@@ -20,6 +21,7 @@
   }
   &__content {
     width: $width;
+    box-sizing: border-box;
     border: 1px solid $color-background-grey;
     border-radius: 2px;
     z-index: 1;
@@ -61,5 +63,14 @@
   }
   .focused {
     outline: -webkit-focus-ring-color auto 1px;
+  }
+  .content-appear {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  .content-appear-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
   }
 }
