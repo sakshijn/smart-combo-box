@@ -20,9 +20,9 @@
   width: 220px;
   border: none;
 }
-/* .search-box:focus-visible {
+.search-box:focus-visible {
   outline: none;
-} */
+}
 
 .selected-value {
   font-size: 14px;
@@ -45,7 +45,6 @@
   background-color: #ddd;
 }
 .select-box-content {
-  display: none;
   min-width: 220px;
   border: 1px solid #ddd;
   border-radius: 2px;
@@ -60,12 +59,9 @@
   background-color: #fff;
 }
 
-.show {
-  display: block;
-}
 .hide {
   display: none;
 }
 .focused {
-  outline: 1px solid #0033cc;
+  outline: -webkit-focus-ring-color auto 1px;
 }
