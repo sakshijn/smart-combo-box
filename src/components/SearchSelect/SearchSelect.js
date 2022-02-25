@@ -14,6 +14,7 @@ export const SearchSelect = ({ data, placeholderText }) => {
   const [isOpen, setSelectOpen] = useState(false);
   const [selectedVal, setSelectedVal] = useState("");
   const [filteredItems, setFilteredItems] = useState(data);
+  const [inputVal, setInputVal] = useState("");
   const ref = useRef(null);
 
   const handleHideDropdown = (event) => {
@@ -42,6 +43,7 @@ export const SearchSelect = ({ data, placeholderText }) => {
     setFilteredItems(
       data.filter((item) => item.displayItem.toLowerCase().includes(filterVal))
     );
+    setInputVal(filterVal);
   };
   const getFAIcon = (icon) => {
     switch (icon) {
@@ -86,7 +88,8 @@ export const SearchSelect = ({ data, placeholderText }) => {
                 autoFocus
                 placeholder={placeholderText}
                 className="search-select__input"
-                onKeyUp={filterItems}
+                onChange={filterItems}
+                value={inputVal}
               />
               <FontAwesomeIcon icon={faAngleDown} />
             </div>
